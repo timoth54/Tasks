@@ -26,6 +26,9 @@ namespace TaskViewer
                 number = Console.ReadLine();
             }*/
 
+            /*int[] arr = { 5, 4, 3, 2, 1 };
+
+            FindSecondLargeInArray(arr);*/
         }
 
         internal static void chkPalindrome(string str)
@@ -33,9 +36,29 @@ namespace TaskViewer
 
         }
 
+        /// <summary>
+        /// Finds the second largest number in an array.
+        /// </summary>
+        /// <param name="arr">The array being checked.</param>
         internal static void FindSecondLargeInArray(int[] arr)
         {
+            int largestNum = 0;
+            int secondLargestNum = 0;
 
+            for (int index = 0; index < arr.Length; index++)
+            {
+                if (arr[index] > largestNum)
+                {
+                    secondLargestNum = largestNum;
+                    largestNum = arr[index];
+                }
+                else if (arr[index] <= largestNum && arr[index] > secondLargestNum)
+                {
+                    secondLargestNum = arr[index];
+                }
+            }
+
+            Console.WriteLine(secondLargestNum);
         }
 
         /// <summary>
