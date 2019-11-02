@@ -1,0 +1,7 @@
+F:\Development\TasksFolder\TaskViewer\bin\Debug\TaskViewer.exe.config
+F:\Development\TasksFolder\TaskViewer\bin\Debug\TaskViewer.exe
+F:\Development\TasksFolder\TaskViewer\bin\Debug\TaskViewer.pdb
+F:\Development\TasksFolder\TaskViewer\obj\Debug\TaskViewer.csprojAssemblyReference.cache
+F:\Development\TasksFolder\TaskViewer\obj\Debug\TaskViewer.csproj.CoreCompileInputs.cache
+F:\Development\TasksFolder\TaskViewer\obj\Debug\TaskViewer.exe
+F:\Development\TasksFolder\TaskViewer\obj\Debug\TaskViewer.pdb
