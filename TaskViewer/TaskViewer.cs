@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * TaskViewer.cs
+ * Author: Timothy Tucker
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +11,16 @@ using System.Threading.Tasks;
 
 namespace TaskViewer
 {
+    /// <summary>
+    /// A class with multiple methods
+    /// designed to fulfill three tasks.
+    /// </summary>
     class TaskViewer
     {
+        /// <summary>
+        /// The main method
+        /// </summary>
+        /// <param name="args">Arguments from command prompt.</param>
         static void Main(string[] args)
         {
             /*Console.Write("Enter a number (Type 0 to exit): ");
@@ -29,11 +42,48 @@ namespace TaskViewer
             /*int[] arr = { 5, 4, 3, 2, 1 };
 
             FindSecondLargeInArray(arr);*/
+
+            chkPalindrome("Step  on no pets");
+            chkPalindrome("Don't nod");
+            chkPalindrome("I did, did I?");
+            chkPalindrome("No lemon, no melon");
+            chkPalindrome("Eva, can I see bees in a cave?");
+            chkPalindrome("Aladdin went to the cavern to find a magic lamp in a chamber of riches");
         }
 
+        /// <summary>
+        /// Checks if a given string is a palindrome.
+        /// </summary>
+        /// <param name="str">The string to check.</param>
         internal static void chkPalindrome(string str)
         {
+            //A list of common special characters that act as delimiters.
+            char[] separators = { ' ', ',', '\'', '?' };
 
+            //Create two StringBuilders for each way a word order is said.
+            StringBuilder wordOrder = new StringBuilder();
+            StringBuilder reverseWordOrder = new StringBuilder();
+
+            //Collect all words in the string, and add it to the forward read word order.
+            List<string> words = str.ToLower().Split(separators).ToList();
+            words.RemoveAll(x => x == "");
+            words.ForEach(word => wordOrder.Append(word));
+
+            //Append to the reverse word order, character-by-character.
+            for (int index = wordOrder.Length - 1; index > -1; index--)
+            {
+                reverseWordOrder.Append(wordOrder[index]);
+            }
+
+            //If the word order backwards is the same forward, then it is a palindrome.
+            if (wordOrder.Equals(reverseWordOrder))
+            {
+                Console.WriteLine("Palindrome");
+            }
+            else
+            {
+                Console.WriteLine("Not Palindrome");
+            }
         }
 
         /// <summary>
