@@ -23,6 +23,52 @@ namespace TaskViewer
         /// <param name="args">Arguments from command prompt.</param>
         static void Main(string[] args)
         {
+            string taskNumber;
+            do
+            {
+                //Prompt the user for a task to perform.
+                Console.WriteLine("\nTask 1: Palindrome Checker");
+                Console.WriteLine("Task 2: Find Second Largest Number");
+                Console.WriteLine("Task 3: Prime Number Checker\n");
+                Console.Write("Select a Task (Enter 0 to exit): ");
+                taskNumber = Console.ReadLine();
+                Console.WriteLine();
+
+                //Check that the task number is valid.
+                while (taskNumber != "0" &&
+                       taskNumber != "1" && 
+                       taskNumber != "2" && 
+                       taskNumber != "3")
+                {
+                    Console.WriteLine("\n\nInvalid Option\n\n");
+                    Console.WriteLine("Task 1: Palindrome Checker");
+                    Console.WriteLine("Task 2: Find Second Largest Number");
+                    Console.WriteLine("Task 3: Prime Number Checker\n");
+                    Console.Write("Select a Task (Enter 0 to exit): ");
+                    taskNumber = Console.ReadLine();
+                    Console.WriteLine();
+                }
+
+                switch (taskNumber)
+                {
+                    //Use the Palindrome Checking method.
+                    case "1":
+
+                        string str;
+
+                        //Check user-entered words until the string is blank.
+                        do
+                        {
+                            Console.Write("Enter a word or phrase (Leave blank to return to selection): ");
+                            str = Console.ReadLine();
+                            if (!str.Equals(""))
+                            {
+                                chkPalindrome(str);
+                            }
+                        } while (str != "");
+                        break;
+                }
+            } while (taskNumber != "0");
             /*Console.Write("Enter a number (Type 0 to exit): ");
             string number = Console.ReadLine();
             while (number != "0")
@@ -78,7 +124,7 @@ namespace TaskViewer
                 if (reverseWordOrder.Equals(wordOrder))
                 {
                     palindrome = true;
-                    Console.WriteLine("Palindrome");
+                    Console.WriteLine("Palindrome\n");
                 }
             }
             if (!palindrome)
@@ -95,11 +141,11 @@ namespace TaskViewer
                 //If the word order backwards is the same forward, then it is a palindrome.
                 if (wordOrder.Equals(reverseWordOrder))
                 {
-                    Console.WriteLine("Palindrome");
+                    Console.WriteLine("Palindrome\n");
                 }
                 else
                 {
-                    Console.WriteLine("Not Palindrome");
+                    Console.WriteLine("Not Palindrome\n");
                 }
             }
         }
