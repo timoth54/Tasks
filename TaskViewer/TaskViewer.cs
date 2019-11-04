@@ -43,12 +43,6 @@ namespace TaskViewer
 
             FindSecondLargeInArray(arr);*/
 
-            chkPalindrome("Step  on no pets");
-            chkPalindrome("Don't nod");
-            chkPalindrome("I did, did I?");
-            chkPalindrome("No lemon, no melon");
-            chkPalindrome("Eva, can I see bees in a cave?");
-            chkPalindrome("Aladdin went to the cavern to find a magic lamp in a chamber of riches");
         }
 
         /// <summary>
@@ -58,31 +52,55 @@ namespace TaskViewer
         internal static void chkPalindrome(string str)
         {
             //A list of common special characters that act as delimiters.
-            char[] separators = { ' ', ',', '\'', '?' };
+            char[] separators = { ' ', ',', '\'', '?', ':', '.', '!', '"', '-', '—' };
 
-            //Create two StringBuilders for each way a word order is said.
+            //Create two StringBuilders for each way a word order is said,
+            //and a boolean for the word is identified as a palindrome.
             StringBuilder wordOrder = new StringBuilder();
-            StringBuilder reverseWordOrder = new StringBuilder();
+            StringBuilder reverseWordOrder;
+            bool palindrome = false;
 
             //Collect all words in the string, and add it to the forward read word order.
             List<string> words = str.ToLower().Split(separators).ToList();
-            words.RemoveAll(x => x == "");
+            words.RemoveAll(empty => empty == "");
             words.ForEach(word => wordOrder.Append(word));
 
-            //Append to the reverse word order, character-by-character.
-            for (int index = wordOrder.Length - 1; index > -1; index--)
+            //If there is more than one word,
+            // check if it is a word palindrome.
+            if (words.Count > 1)
             {
-                reverseWordOrder.Append(wordOrder[index]);
-            }
+                reverseWordOrder = new StringBuilder();
+                for (int index = words.Count - 1; index > -1; index--)
+                {
+                    reverseWordOrder.Append(words[index]);
+                }
 
-            //If the word order backwards is the same forward, then it is a palindrome.
-            if (wordOrder.Equals(reverseWordOrder))
-            {
-                Console.WriteLine("Palindrome");
+                if (reverseWordOrder.Equals(wordOrder))
+                {
+                    palindrome = true;
+                    Console.WriteLine("Palindrome");
+                }
             }
-            else
+            if (!palindrome)
             {
-                Console.WriteLine("Not Palindrome");
+                //Initialize or reinitialize StringBuilder for new reverse word order.
+                reverseWordOrder = new StringBuilder();
+
+                //Append to the reverse word order, character-by-character.
+                for (int index = wordOrder.Length - 1; index > -1; index--)
+                {
+                    reverseWordOrder.Append(wordOrder[index]);
+                }
+
+                //If the word order backwards is the same forward, then it is a palindrome.
+                if (wordOrder.Equals(reverseWordOrder))
+                {
+                    Console.WriteLine("Palindrome");
+                }
+                else
+                {
+                    Console.WriteLine("Not Palindrome");
+                }
             }
         }
 
@@ -92,9 +110,15 @@ namespace TaskViewer
         /// <param name="arr">The array being checked.</param>
         internal static void FindSecondLargeInArray(int[] arr)
         {
+            //Create two integers to hold the largest number,
+            // and second largest number in the array.
             int largestNum = 0;
             int secondLargestNum = 0;
 
+            //For each number in the array,
+            // the second number should always be
+            // greater than every preceding number,
+            // and smaller than the largest number.
             for (int index = 0; index < arr.Length; index++)
             {
                 if (arr[index] > largestNum)
@@ -108,6 +132,7 @@ namespace TaskViewer
                 }
             }
 
+            // Print the second largest number.
             Console.WriteLine(secondLargestNum);
         }
 
