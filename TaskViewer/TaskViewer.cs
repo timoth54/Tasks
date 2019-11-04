@@ -176,14 +176,7 @@ namespace TaskViewer
                             // otherwise, print "Not Prime".
                             if (!number.Equals(""))
                             {
-                                if (FindPrime(Convert.ToInt32(number)))
-                                {
-                                    Console.WriteLine("Prime\n");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Not Prime\n");
-                                }
+                                FindPrime(Convert.ToInt32(number));
                             }
                         } while (number != "");
                         break;
@@ -295,10 +288,12 @@ namespace TaskViewer
             // that makes the given number 0.
             if (number == 1)
             {
+                Console.WriteLine("Not Prime\n");
                 return false;
             }
             else if (number == 2)
             {
+                Console.WriteLine("Prime\n");
                 return true;
             }
             else
@@ -313,12 +308,18 @@ namespace TaskViewer
                 {
                     numbers.RemoveAll(x => x % numbers[i] == 0 && x != numbers[i]);
                     
+                    //If the list does not contain the given number anymore
+                    // then print that the number was not prime, and return false.
                     if (!numbers.Contains(number))
                     {
+                        Console.WriteLine("Not Prime\n");
                         return false;
                     }
                 }
-                
+
+                //If the number still remains in the list,
+                // print that it is prime, and, return true.
+                Console.WriteLine("Prime\n");
                 return true;
             }
         }
