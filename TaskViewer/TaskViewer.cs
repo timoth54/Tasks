@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace TaskViewer
 {
@@ -112,6 +113,45 @@ namespace TaskViewer
 
                                     Console.Write("\nSecond largest in array is: ");
                                     FindSecondLargeInArray(randNumbers);
+                                    break;
+
+                                case "2":
+                                    string number = "";
+                                    List<int> numbers = new List<int>();
+                                    Regex reg = new Regex("[^0-9]");
+
+                                    //Prompt the user for numbers until they enter 'd'
+                                    // to signal they are finished.
+                                    while (number != "d")
+                                    {
+                                        Console.Write("Enter value (enter 'd' to finish): ");
+                                        number = Console.ReadLine();
+
+                                        //If the user enters a non-integer
+                                        // then it should not be added to the list.
+                                        if (reg.IsMatch(number))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            numbers.Add(Convert.ToInt32(number));
+                                        }
+                                    }
+
+                                    //The second largest in an array
+                                    // should be shown only when the
+                                    // array has more than 1 number.
+                                    if (numbers.Count >= 2)
+                                    {
+                                        Console.Write("\nSecond largest in array is: ");
+                                        FindSecondLargeInArray(numbers.ToArray());
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nThere are not enough numbers to determine the second largest number.");
+                                    }
+
                                     break;
 
                             }
