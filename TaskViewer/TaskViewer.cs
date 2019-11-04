@@ -24,7 +24,12 @@ namespace TaskViewer
         /// <param name="args">Arguments from command prompt.</param>
         static void Main(string[] args)
         {
+            //Declare a string for holding a task number
+            // and a string for holding numbers used in 
+            // the second and third task;
             string taskNumber;
+            string number = "";
+
             do
             {
                 //Prompt the user for a task to perform.
@@ -41,7 +46,7 @@ namespace TaskViewer
                        taskNumber != "2" && 
                        taskNumber != "3")
                 {
-                    Console.WriteLine("\n\nInvalid Option\n\n");
+                    Console.WriteLine("\nInvalid Task\n");
                     Console.WriteLine("Task 1: Palindrome Checker");
                     Console.WriteLine("Task 2: Find Second Largest Number");
                     Console.WriteLine("Task 3: Prime Number Checker\n");
@@ -87,8 +92,8 @@ namespace TaskViewer
                                    option != "1" &&
                                    option != "2")
                             {
-                                Console.WriteLine("\nInvalid Option\n\n");
-                                Console.WriteLine("\nOption 1: Randomly Generated List of 10. Numbers are from 1 to 1000.");
+                                Console.WriteLine("\nInvalid Option\n");
+                                Console.WriteLine("Option 1: Randomly Generated List of 10. Numbers are from 1 to 1000.");
                                 Console.WriteLine("Option 2: Make a list of numbers manually.");
                                 Console.Write("\nSelect an Option (Enter 0 to exit): ");
                                 option = Console.ReadLine();
@@ -116,7 +121,6 @@ namespace TaskViewer
                                     break;
 
                                 case "2":
-                                    string number = "";
                                     List<int> numbers = new List<int>();
                                     Regex reg = new Regex("[^0-9]");
 
@@ -129,7 +133,7 @@ namespace TaskViewer
 
                                         //If the user enters a non-integer
                                         // then it should not be added to the list.
-                                        if (reg.IsMatch(number))
+                                        if (reg.IsMatch(number) || number == "")
                                         {
 
                                         }
@@ -156,7 +160,32 @@ namespace TaskViewer
 
                             }
                         } while (option != "0");
-                        
+
+                        break;
+
+                    case "3":
+
+                        //Check if a number is prime until the user enters
+                        // an empty string.
+                        do
+                        {
+                            Console.Write("Enter a number (Leave blank to return to selection): ");
+                            number = Console.ReadLine();
+
+                            //If the number is prime, print "Prime".
+                            // otherwise, print "Not Prime".
+                            if (!number.Equals(""))
+                            {
+                                if (FindPrime(Convert.ToInt32(number)))
+                                {
+                                    Console.WriteLine("Prime\n");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Not Prime\n");
+                                }
+                            }
+                        } while (number != "");
                         break;
                 }
             } while (taskNumber != "0");
