@@ -67,28 +67,59 @@ namespace TaskViewer
                             }
                         } while (str != "");
                         break;
+
+                    //Use the Find Second Largest Number method.
+                    case "2":
+                        string option = "";
+
+                        //Loop possible options until the user selects 0.
+                        do
+                        {
+                            //Prompt for option choice, similar to above.
+                            Console.WriteLine("\nOption 1: Randomly Generated List of 10. Numbers are from 1 to 1000.");
+                            Console.WriteLine("Option 2: Make a list of numbers manually.");
+                            Console.Write("\nSelect an Option (Enter 0 to exit): ");
+                            option = Console.ReadLine();
+                            Console.WriteLine();
+
+                            while (option != "0" &&
+                                   option != "1" &&
+                                   option != "2")
+                            {
+                                Console.WriteLine("\nInvalid Option\n\n");
+                                Console.WriteLine("\nOption 1: Randomly Generated List of 10. Numbers are from 1 to 1000.");
+                                Console.WriteLine("Option 2: Make a list of numbers manually.");
+                                Console.Write("\nSelect an Option (Enter 0 to exit): ");
+                                option = Console.ReadLine();
+                                Console.WriteLine();
+                            }
+
+                            switch (option)
+                            {
+                                //Find the second largest number in an array of numbers.
+                                case "1":
+                                    Random random = new Random();
+                                    int[] randNumbers = new int[10];
+
+                                    Console.Write("Numbers in list: ");
+
+                                    //Populate list with random numbers.
+                                    for (int index = 0; index < 10; index++)
+                                    {
+                                        randNumbers[index] = random.Next(1, 1000);
+                                        Console.Write(randNumbers[index] + ", ");
+                                    }
+
+                                    Console.Write("\nSecond largest in array is: ");
+                                    FindSecondLargeInArray(randNumbers);
+                                    break;
+
+                            }
+                        } while (option != "0");
+                        
+                        break;
                 }
             } while (taskNumber != "0");
-            /*Console.Write("Enter a number (Type 0 to exit): ");
-            string number = Console.ReadLine();
-            while (number != "0")
-            {
-                if (FindPrime(Convert.ToInt32(number)))
-                {
-                    Console.WriteLine("Prime");
-                }
-                else
-                {
-                    Console.WriteLine("Not Prime");
-                }
-                Console.Write("Enter a number (Type 0 to exit): ");
-                number = Console.ReadLine();
-            }*/
-
-            /*int[] arr = { 5, 4, 3, 2, 1 };
-
-            FindSecondLargeInArray(arr);*/
-
         }
 
         /// <summary>
